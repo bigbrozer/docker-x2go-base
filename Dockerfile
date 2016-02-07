@@ -25,4 +25,4 @@ RUN echo "x2go:x2go" | chpasswd
 
 # Run it
 EXPOSE 22
-CMD ["/usr/sbin/sshd -D"]
+CMD ["/usr/sbin/sshd", "-D"]
