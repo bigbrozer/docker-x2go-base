@@ -1,5 +1,4 @@
-FROM ubuntu:xenial
-MAINTAINER Vincent BESANCON <besancon.vincent@gmail.com>
+FROM ubuntu:17.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
