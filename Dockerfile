@@ -1,19 +1,24 @@
 FROM ubuntu:17.04
 
+LABEL authors="Vincent BESANCON <besancon.vincent@gmail.com>"
+
 ENV DEBIAN_FRONTEND noninteractive
 
-# Upgrade packages
-RUN apt-get update -y && apt-get upgrade -y
-
 # Install requirements
-RUN apt-get install -y \
-        software-properties-common \
-        openssh-server
+RUN set -x \
+      && apt-get update -y \
+      && apt-get dist-upgrade -y \
+      && apt-get install -y \
+            software-properties-common \
+            openssh-server \
+      && rm -rf /var/lib/apt/lists/*
 
 # Install X2Go server components
-RUN add-apt-repository ppa:x2go/stable
-RUN apt-get update -y
-RUN apt-get install -y x2goserver
+RUN set -x \
+      && add-apt-repository ppa:x2go/stable \
+      && apt-get update -y \
+      && apt-get install -y x2goserver \
+      && rm -rf /var/lib/apt/lists/*
 
 # SSH runtime
 RUN mkdir /var/run/sshd
